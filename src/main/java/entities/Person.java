@@ -13,13 +13,48 @@ public class Person {
 	private long id;
 	private String firstName;
 	private String familyName;
-	private String mail;
+	private String mail; //testing if working
 	
-	@OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private List<Home> homes;
 	
-	@ManyToMany
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+	private List<ElectronicDevice> eDevices;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Person> friends;
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public List<Home> getHomes() {
+		return homes;
+	}
+
+	public void setHomes(List<Home> homes) {
+		this.homes = homes;
+	}
+
+	public List<ElectronicDevice> geteDevices() {
+		return eDevices;
+	}
+
+	public void seteDevices(List<ElectronicDevice> eDevices) {
+		this.eDevices = eDevices;
+	}
+
+	public List<Person> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(List<Person> friends) {
+		this.friends = friends;
+	}
 	
 	public Person(){}
 	
@@ -29,6 +64,7 @@ public class Person {
 		this.familyName = familyName;
 		this.mail = mail;
 		homes = new ArrayList<Home>();
+		friends = new ArrayList<Person>();
 		}
 
 	public String getFirstName() {
@@ -55,5 +91,14 @@ public class Person {
 		this.mail = mail;
 	}
 	
+	public void addHome(Home h)
+	{
+		homes.add(h);
+	}
+	
+	public void addEDevice(ElectronicDevice ed)
+	{
+		eDevices.add(ed);
+	}
 	
 }

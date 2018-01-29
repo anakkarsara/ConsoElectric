@@ -1,0 +1,27 @@
+<%@ page pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			table
+			{
+				margin-top : 17%;
+				font-size : 160%;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<FORM Method="POST" Action="/PersonInfo">
+		<table border = 1 cellpadding = "10" align = "center">
+		<tr> <td>Maison : 	</td>	<td> <INPUT type=text size=20 name=myhome></td> </tr>
+		<tr> <td>Surface : </td>	<td>	<INPUT type=text size=20 name=surface></td> </tr>
+		<tr> <td>Nombre de pieces : 	</td>	<td>	<INPUT type=text size=20 name=nbpieces></td> </tr>
+
+		
+		
+				<tr ><td colspan = "2" align = "right"><INPUT type=submit value=Send></td></tr>
+		</table>
+		</FORM>
+	</body>
+</html>

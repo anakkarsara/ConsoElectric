@@ -1,10 +1,23 @@
+<head>
+	<style>
+		table
+		{
+			margin-top : 17%;
+			font-size : 160%;
+		}
+	</style>
+</head>
+
 <html>
 	<body>
+		<h2><a href="index.html">Retour page d'acueil</a></h2>
 		<FORM Method="POST" Action="/PersonInfo">
-		Firstname : 		<INPUT type=text size=20 name=firstname><BR>
-		Familyname : 	<INPUT type=text size=20 name=familyname><BR>
-		Email : 		<INPUT type=text size=20 name=email><BR>
-				<INPUT type=submit value=Send>
+		<table border = 1 cellpadding = "10" align = "center">
+		<tr> <td>Prenom : 	</td>	<td> <INPUT type=text size=20 name=firstname></td> </tr>
+		<tr> <td>Nom : </td>	<td>	<INPUT type=text size=20 name=familyname></td> </tr>
+		<tr> <td>Email : 	</td>	<td>	<INPUT type=text size=20 name=email></td> </tr>
+				<tr ><td colspan = "2" align = "right"><INPUT type=submit value=Send></td></tr>
+		</table>
 		</FORM>
 	</body>
 </html>
