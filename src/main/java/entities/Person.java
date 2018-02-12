@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 @Entity
 public class Person {
 	
@@ -16,12 +18,15 @@ public class Person {
 	private String mail; //testing if working
 	
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@JsonManagedReference
 	private List<Home> homes;
 	
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@JsonManagedReference
 	private List<ElectronicDevice> eDevices;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
+	@JsonManagedReference
 	private List<Person> friends;
 	
 	public long getId() {

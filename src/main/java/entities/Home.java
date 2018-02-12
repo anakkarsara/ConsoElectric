@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 
 @Entity
 public class Home {
@@ -16,9 +18,10 @@ public class Home {
 	private int numRooms;
 	
 	@ManyToOne
+	@JsonBackReference
 	private Person owner;
 	
-	@OneToMany(mappedBy = "home", cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "home", cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private List<Heater> heaters;
 	
 	public Home(){
