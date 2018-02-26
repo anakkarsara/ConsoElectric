@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entities.Home;
 import entities.Person;
-import jpa.JpaTest;
+import jpa.DAO;
 
 @WebServlet(name="homesInfo", urlPatterns={"/HomesInfo"})
 public class HomeDetails extends HttpServlet {
@@ -24,7 +24,7 @@ public class HomeDetails extends HttpServlet {
 			throws ServletException, IOException {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
 		EntityManager manager = factory.createEntityManager();
-		JpaTest test = new JpaTest(manager);
+		DAO test = new DAO(manager);
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
 		response.setContentType("text/html");
@@ -42,7 +42,7 @@ public class HomeDetails extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
 		EntityManager manager = factory.createEntityManager();
-		JpaTest test = new JpaTest(manager);
+		DAO test = new DAO(manager);
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
 		response.setContentType("text/html");

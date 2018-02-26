@@ -16,23 +16,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import entities.Person;
-import jpa.JpaTest;
+import jpa.DAO;
 
 @Path("/persons")
 public class PersonRessource {
 	
 	private List<Person> persons = new ArrayList<Person>();
+	EntityManagerFactory factory;
+	EntityManager manager;
 	
 	public PersonRessource()
 	{
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
-		EntityManager manager = factory.createEntityManager();
-		JpaTest test = new JpaTest(manager);
-		EntityTransaction tx = manager.getTransaction();
-		tx.begin();
+		factory = Persistence.createEntityManagerFactory("dev");
+		manager = factory.createEntityManager();
+		DAO test = new DAO(manager);
 		persons = test.listPersons();
-		tx.commit();
- 		manager.close();
 	}
 	
     @GET
@@ -52,7 +50,11 @@ public class PersonRessource {
     @Path("delete/{id}")
     @Produces({ MediaType.APPLICATION_JSON })
     public Person deleteById(@PathParam("id") String arg0) {
-        return persons.remove(Integer.parseInt(arg0));
+    	EntityTransaction tx = manager.getTransaction();
+    	tx.begin();
+        Person p = persons.remove(Integer.parseInt(arg0));
+        tx.commit();
+        return p;
     }
     
     @GET
