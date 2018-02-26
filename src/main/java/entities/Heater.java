@@ -15,9 +15,10 @@ public class Heater extends SmartDevice {
 	
 	public Heater() { }
 
-	public Heater(String hName) {
+	public Heater(String hName, int power) {
 		super();
 		this.hName = hName;
+		this.power = power;
 	}
 	
 	public Home getHome() {

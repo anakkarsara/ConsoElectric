@@ -69,8 +69,8 @@ public class JpaTest {
 		manager.persist(e);
 	}
 
-	public void createHeater(String name){
-		Heater h =  new Heater(name);
+	public void createHeater(String name, int p){
+		Heater h =  new Heater(name, p);
 		h.sethName(name);
 		manager.persist(h);
 	}
