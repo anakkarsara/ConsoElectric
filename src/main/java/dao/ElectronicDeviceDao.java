@@ -8,15 +8,16 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import entities.ElectronicDevice;
+import entities.Person;
 
 public class ElectronicDeviceDao {
 	  EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
 	  EntityManager manager = factory.createEntityManager();
 	  EntityTransaction tx = manager.getTransaction();
 
-	  public void createED(String name, double conso)  {
+	  public void createED(String name, double conso, Person owner)  {
 	    tx.begin();
-	    ElectronicDevice elec = new ElectronicDevice(name, conso) ;
+	    ElectronicDevice elec = new ElectronicDevice(name, conso, owner) ;
 	    try {
 	      manager.persist(elec);
 	    } catch (Exception e) {
