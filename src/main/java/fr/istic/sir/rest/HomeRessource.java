@@ -18,7 +18,7 @@ import javax.ws.rs.core.MediaType;
 import entities.*;
 import jpa.DAO;
 
-@Path("/homes")
+@Path("/home")
 public class HomeRessource {
 	
 	private List<Home> homes = new ArrayList<Home>();
@@ -40,7 +40,7 @@ public class HomeRessource {
     }
     
     @GET 
-    @Path("search/{id}")
+    @Path("/{id}")
     @Produces({ MediaType.APPLICATION_JSON })
     public Home findById(@PathParam("id") String arg0) {
 		DAO test = new DAO(manager);
@@ -49,7 +49,7 @@ public class HomeRessource {
     }
 
     @DELETE 
-    @Path("delete/{id}")
+    @Path("/{id}")
     @Produces({ MediaType.APPLICATION_JSON })
     public Home deleteById(@PathParam("id") String arg0) {
     	EntityTransaction tx = manager.getTransaction();

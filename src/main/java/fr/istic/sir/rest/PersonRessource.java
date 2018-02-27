@@ -18,7 +18,7 @@ import javax.ws.rs.core.MediaType;
 import entities.Person;
 import jpa.DAO;
 
-@Path("/persons")
+@Path("/person")
 public class PersonRessource {
 	
 	private List<Person> persons = new ArrayList<Person>();
@@ -40,14 +40,14 @@ public class PersonRessource {
     }
     
     @GET 
-    @Path("search/{id}")
+    @Path("/{id}")
     @Produces({ MediaType.APPLICATION_JSON })
     public Person findById(@PathParam("id") String arg0) {
         return persons.get(Integer.parseInt(arg0));
     }
 
     @DELETE 
-    @Path("delete/{id}")
+    @Path("/{id}")
     @Produces({ MediaType.APPLICATION_JSON })
     public Person deleteById(@PathParam("id") String arg0) {
     	EntityTransaction tx = manager.getTransaction();
