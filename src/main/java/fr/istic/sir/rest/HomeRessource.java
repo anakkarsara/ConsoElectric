@@ -16,16 +16,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import entities.*;
-import jpa.JpaTest;
+import jpa.DAO;
 
 @Path("/homes")
 public class HomeRessource {
 	
 	private List<Home> homes = new ArrayList<Home>();
+	EntityManagerFactory factory;
+	EntityManager manager;
 	
 	public HomeRessource()
 	{
-		
+		factory = Persistence.createEntityManagerFactory("dev");
+		manager = factory.createEntityManager();
+		DAO test = new DAO(manager);
+		homes = test.allHomes();
 	}
 	
     @GET
@@ -38,14 +43,8 @@ public class HomeRessource {
     @Path("search/{id}")
     @Produces({ MediaType.APPLICATION_JSON })
     public Home findById(@PathParam("id") String arg0) {
-    	EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
-		EntityManager manager = factory.createEntityManager();
-		JpaTest test = new JpaTest(manager);
-		EntityTransaction tx = manager.getTransaction();
-		tx.begin();
+		DAO test = new DAO(manager);
 		homes = test.allHomes();
-		tx.commit();
- 		manager.close();
         return homes.get(Integer.parseInt(arg0));
     }
 
@@ -53,7 +52,11 @@ public class HomeRessource {
     @Path("delete/{id}")
     @Produces({ MediaType.APPLICATION_JSON })
     public Home deleteById(@PathParam("id") String arg0) {
-        return homes.remove(Integer.parseInt(arg0));
+    	EntityTransaction tx = manager.getTransaction();
+		tx.begin();
+        Home h = homes.remove(Integer.parseInt(arg0));
+        tx.commit();
+        return h;
     }
     
     @GET

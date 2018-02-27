@@ -7,9 +7,9 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import entities.*;
-public class JpaTest {
+public class DAO {
 	private EntityManager manager;
-	public JpaTest(EntityManager manager) {
+	public DAO(EntityManager manager) {
 		this.manager = manager;
 	}
 	/**
@@ -18,7 +18,7 @@ public class JpaTest {
 	public static void main(String[] args) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
 		EntityManager manager = factory.createEntityManager();
-		JpaTest test = new JpaTest(manager);
+		DAO test = new DAO(manager);
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
 		try {
@@ -69,8 +69,8 @@ public class JpaTest {
 		manager.persist(e);
 	}
 
-	public void createHeater(String name){
-		Heater h =  new Heater(name);
+	public void createHeater(String name, int p){
+		Heater h =  new Heater(name, p);
 		h.sethName(name);
 		manager.persist(h);
 	}

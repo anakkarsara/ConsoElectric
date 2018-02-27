@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import entities.Person;
 import jpa.DAO;
 
-@WebServlet(name="addHome", urlPatterns={"/AddHome"})
-public class AddHome extends HttpServlet {
+@WebServlet(name="addED", urlPatterns={"/AddED"})
+public class AddElectronicDevice extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
@@ -28,11 +28,10 @@ public class AddHome extends HttpServlet {
 		response.setContentType("text/html");
 		 PrintWriter out = response.getWriter();
 		 out.println("<h2><a href=\"index.html\">Retour page d'acueil</a></h2>");
-		 out.println("<FORM Method=\"POST\" Action=\"/HomesInfo\">\r\n" + 
+		 out.println("<FORM Method=\"POST\" Action=\"/EdInfo\">\r\n" + 
 		 		"		<table border = 1 cellpadding = \"10\" align = \"center\">\r\n" + 
-		 		"		<tr> <td>Maison : 	</td>	<td> <INPUT type=text size=20 name=myhome></td> </tr>\r\n" + 
-		 		"		<tr> <td>Surface : </td>	<td>	<INPUT type=text size=20 name=surface></td> </tr>\r\n" + 
-		 		"		<tr> <td>Nombre de pieces : 	</td>	<td>	<INPUT type=text size=20 name=nbpce></td> </tr>\r\n");
+		 		"		<tr> <td>Name : 	</td>	<td> <INPUT type=text size=20 name=name></td> </tr>\r\n" + 
+		 		"		<tr> <td>Conso : </td>	<td>	<INPUT type=text size=20 name=conso></td> </tr>\r\n");
 		 out.println("<td>Proprietaire</td><td><SELECT name=\"owner\" size=\"1\">");
 		 for (Person p :test.listPersons())
 		 {
@@ -42,4 +41,5 @@ public class AddHome extends HttpServlet {
 		 out.println(	"		</table>\r\n" + 
 		 		"		</FORM>");
 	}
+
 }
