@@ -16,7 +16,7 @@
  ```
  The app's homepage is launched on:
  ```
- localhost:9000/index.html.
+ localhost:9002/index.html.
  ```
  ## Api services' URIs
  
