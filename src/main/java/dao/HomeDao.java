@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 
 import entities.Heater;
 import entities.Home;
+import entities.Person;
 
 public class HomeDao {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
@@ -26,6 +27,10 @@ public class HomeDao {
 	    tx.commit();
 	    return h;
 	  }
+	  
+		public List<Home> allHomes() {
+			return manager.createQuery("Select a From home a", Home.class).getResultList();
+		}
 
 	  public Home getHomeById(long id) {
 	    return manager.createQuery("Select a From Home a where id =" + id, Home.class).getSingleResult();
