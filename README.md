@@ -18,7 +18,7 @@
  ```
  localhost:9002/index.html.
  ```
- ## Api services' URIs
+ ## API services' URIs
  
  Resource used : ```application/json```
  Base URI : ```localhost:9002/rest/```
