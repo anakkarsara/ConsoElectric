@@ -21,6 +21,7 @@ localhost:9000/index.html.
 ## Api services' URIs
 
 Resource used : ```application/json```
+
 Base URI : ```localhost:9000/rest/```
 
 
