@@ -30,6 +30,18 @@ public class PersonDao {
 	    return p1;
 	  }
 	  
+	  public Person addPerson(Person P) {
+		    tx.begin();
+		    try {
+		      manager.persist(P);
+
+		    } catch (Exception e) {
+		      e.printStackTrace();
+		    }
+		    tx.commit();
+		    return P;
+		  }
+	  
 	  public void addHome(Person person, Home home) {
 		    tx.begin();
 		    person.getHomes().add(home);
@@ -44,21 +56,21 @@ public class PersonDao {
 		    tx.commit();
 		  }
 
-	  public Person findById(int id) {
+	  public Person findById(long id) {
 	    tx.begin();
 	    return manager.find(Person.class, id);
 	  }
 
-	  public Person getPersonById(int id) {
+	  public Person getPersonById(long id) {
 	    return manager.createQuery("Select a From Person a where id =" + id, Person.class).getSingleResult();
 	  }
+	  
+		public List<Person> allPersons() {
+			return manager.createQuery("Select a From Person a", Person.class).getResultList();
+		}
 
-	  public void deleteById(int id) {
-	    List<Person> resultList = manager.createQuery("Select a From Person a where a.id= '" + id + "'", Person.class).getResultList();
-	    for (Person x : resultList) {
-	      tx.begin();
-	      manager.remove(x);
-	      tx.commit();
-	    }
+	  public void deleteById(long id) {
+	    Person result = manager.createQuery("Select a From Person a where a.id= '" + id + "'", Person.class).getSingleResult();
+	      manager.remove(result);
 	  }
 }

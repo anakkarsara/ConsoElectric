@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.PersonDao;
 import entities.Person;
 import jpa.DAO;
 
@@ -47,14 +48,23 @@ public class PersonDetails extends HttpServlet {
 		tx.begin();
 		response.setContentType("text/html");
 		 PrintWriter out = response.getWriter();
+		 if(request.getParameter("person").isEmpty())
+		 {
 		test.createPerson(request.getParameter("firstname"), request.getParameter("familyname") , request.getParameter("email"));
+		tx.commit();
+		 }
+		 else
+		 {
+			 PersonDao pd = new PersonDao();
+			 pd.deleteById(Long.parseLong(request.getParameter("person")));
+			 tx.commit();
+		 }
 		 out.println("<h2><a href=\"index.html\">Retour page d'acueil</a></h2>");
          out.println("<table border = 2 cellpadding = \"10\" cellspacing = \"10\" align= \"center\">  <tr>  <th>Prenom</th> <th>Nom</th>  <th>Email</th> " );
          for (Person next : test.listPersons()) {
              out.println( " <tr>    <td>"+next.getFirstName()+"</td>   <td>"+next.getFamilyName()+"</td>   <td>"+next.getMail()+"</td> </tr>  " ) ;
          }
          out.println( "</table> " ) ;
- 		tx.commit();
  		manager.close();
  		
 		/*out.println("<HTML>\n<BODY>\n" +
