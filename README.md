@@ -18,6 +18,9 @@
  ```
  localhost:9002/index.html.
  ```
+ ## App design
+ Available in [design.md](https://github.com/anakkarsara/ConsoElectric/blob/master/design.md).
+ 
  ## API services' URIs
  
  Resource used : ```application/json```
