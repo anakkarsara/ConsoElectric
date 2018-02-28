@@ -18,3 +18,20 @@ The app's homepage is launched on:
 ```
 localhost:9000/index.html.
 ```
+## Api services' URIs
+
+Resource used : ```application/json```
+Base URI : ```localhost:9000/rest/```
+
+
+| Method     | URL | Action   |
+| :------- | ----: | :---: |
+| GET    | /person  |  display all the people   |
+| GET    | /person/{id}  |  display one specific person with the given {id} parameter   |
+| GET    | /person/{id}/homes  |  display all the houses owned by the person with the given {id} parameter   |
+| POST    | /person  |  create a new person   |
+| DELETE    | /person/{id}  |  delete one specific person with the given {id} parameter   |
+| GET    | /home  |  display all the homes   |
+| GET    | /home/{id}  |  display one specific home with the given {id} parameter   |
+| POST    | /home  |  create a new home  |
+| DELETE    | /home/{id}  |  delete one specific home with the given {id} parameter   |
