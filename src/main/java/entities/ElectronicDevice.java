@@ -16,12 +16,9 @@ public class ElectronicDevice extends SmartDevice {
 	public double getConsoMoy() {
 		return consoMoy;
 	}
-	public ElectronicDevice () {
-	}
-	public ElectronicDevice (String edName, double consoMoy, Person owner) {
+	public void setConsoMoy(String edName, double consoMoy) {
 		this.edName = edName;
 		this.consoMoy = consoMoy;
-		this.owner = owner;
 	}
 	public long getId() {
 		return id;
