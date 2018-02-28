@@ -16,15 +16,15 @@ import entities.Person;
 @WebServlet(name="deleteHome", urlPatterns={"/DeleteHome"})
 public class DeleteHome extends HttpServlet {
 
-	HomeDao hd = new HomeDao();
+	private HomeDao hd = new HomeDao();
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		 PrintWriter out = response.getWriter();
 		 out.println("<h2><a href=\"index.html\">Retour page d'acueil</a></h2>");
-		 out.println("<FORM Method=\"POST\" Action=\"/HomeDetails\">\r\n" + 
+		 out.println("<FORM Method=\"POST\" Action=\"/HomesInfo\">\r\n" + 
 		 		"		<table border = 1 cellpadding = \"10\" align = \"center\">\r\n");
-		 out.println("<td>Proprietaire</td><td><SELECT name=\"home\" size=\"5\">");
+		 out.println("<td>Maisons</td><td><SELECT name=\"home\" size=\"5\">");
 		 for (Home p :hd.allHomes())
 		 {
 			 out.println("<option value = \""+ p.getId()+ "\">"+p.getMyHome());

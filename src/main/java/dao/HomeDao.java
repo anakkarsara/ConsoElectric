@@ -29,7 +29,7 @@ public class HomeDao {
 	  }
 	  
 		public List<Home> allHomes() {
-			return manager.createQuery("Select a From home a", Home.class).getResultList();
+			return manager.createQuery("Select a From Home a", Home.class).getResultList();
 		}
 
 	  public Home getHomeById(long id) {
