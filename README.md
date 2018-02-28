@@ -32,5 +32,4 @@
  | DELETE    | /person/{id}  |  delete one specific person with the given {id} parameter   |
  | GET    | /home  |  display all the homes   |
  | GET    | /home/{id}  |  display one specific home with the given {id} parameter   |
- | POST    | /home  |  create a new home  |
  | DELETE    | /home/{id}  |  delete one specific home with the given {id} parameter   |
