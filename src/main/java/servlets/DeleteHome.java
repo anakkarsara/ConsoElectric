@@ -22,7 +22,7 @@ public class DeleteHome extends HttpServlet {
 		response.setContentType("text/html");
 		 PrintWriter out = response.getWriter();
 		 out.println("<h2><a href=\"index.html\">Retour page d'acueil</a></h2>");
-		 out.println("<FORM Method=\"POST\" Action=\"/PersonInfo\">\r\n" + 
+		 out.println("<FORM Method=\"POST\" Action=\"/HomeDetails\">\r\n" + 
 		 		"		<table border = 1 cellpadding = \"10\" align = \"center\">\r\n");
 		 out.println("<td>Proprietaire</td><td><SELECT name=\"home\" size=\"5\">");
 		 for (Home p :hd.allHomes())
