@@ -21,7 +21,7 @@
  ## Api services' URIs
  
  Resource used : ```application/json```
- Base URI : ```localhost:9000/rest/```
+ Base URI : ```localhost:9002/rest/```
  
  
  | Method     | URL | Action   |
