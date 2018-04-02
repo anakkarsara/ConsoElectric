@@ -51,7 +51,7 @@
             <property name="hibernate.archive.autodetection" value="class, hbm"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-            <property name="hibernate.connection.password" value="saranas1"/>
+            <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.connection.url" value="jdbc:mysql://mysql.istic.univ-rennes1.fr:3306/base_18012429"/>
             <property name="hibernate.connection.username" value="user_18012429"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
