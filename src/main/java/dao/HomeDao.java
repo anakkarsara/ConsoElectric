@@ -45,10 +45,9 @@ public class HomeDao {
 		  }
 
 	  public void deleteById(long id) {
-	    List<Home> resultList = manager.createQuery("Select a From Home a where a.id= '" + id + "'", Home.class).getResultList();
-	    for (Home x : resultList) {
-	      tx.begin();
-	      manager.remove(x);
+	    Home result = manager.createQuery("Select a From Home a where a.id= '" + id + "'", Home.class).getSingleResult();
+	    tx.begin();
+	      manager.remove(result);
 	      tx.commit();
 	    }
 	  }
