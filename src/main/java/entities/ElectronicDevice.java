@@ -11,6 +11,7 @@ public class ElectronicDevice extends SmartDevice {
 	private String edName;
 	private double consoMoy;
 	@ManyToOne
+	@JsonBackReference
 	private Person owner;
 	
 	public double getConsoMoy() {
