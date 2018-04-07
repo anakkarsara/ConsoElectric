@@ -48,14 +48,7 @@ public class HomeDetails extends HttpServlet {
 		tx.begin();
 		response.setContentType("text/html");
 		 PrintWriter out = response.getWriter();
-		 if(request.getParameter("home").isEmpty())
 		test.createHome(request.getParameter("myhome"), Double.parseDouble(request.getParameter("surface")) , Integer.parseInt(request.getParameter("nbpce")), test.getPerson(Long.parseLong(request.getParameter("owner"))));
-		 
-		 else
-		 {
-			 HomeDao hd = new HomeDao();
-			 hd.deleteById(Long.parseLong(request.getParameter("home")));
-		 }
 		 out.println("<h2><a href=\"index.html\">Retour page d'acueil</a></h2>");
          out.println("<table border = 2 cellpadding = \"10\" cellspacing = \"10\" align= \"center\">  <tr>  <th>Maison</th> <th>Surface</th>  <th>Nb pieces</th> <th>Proprietaire</th> " );
          for (Home next : test.allHomes()) {
