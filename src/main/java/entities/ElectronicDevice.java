@@ -1,6 +1,7 @@
 package entities;
 
 import javax.persistence.*;
+import org.codehaus.jackson.annotate.JsonBackReference;
 
 @Entity
 public class ElectronicDevice extends SmartDevice {
