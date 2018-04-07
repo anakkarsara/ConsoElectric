@@ -70,7 +70,9 @@ public class PersonDao {
 		}
 
 	  public void deleteById(long id) {
-	    Person result = manager.createQuery("Select a From Person a where a.id= '" + id + "'", Person.class).getSingleResult();
-	      manager.remove(result);
+	  	tx.begin();
+		Person result = manager.createQuery("Select a From Person a where a.id= '" + id + "'", Person.class).getSingleResult();
+		manager.remove(result);
+		tx.commit()
 	  }
 }
