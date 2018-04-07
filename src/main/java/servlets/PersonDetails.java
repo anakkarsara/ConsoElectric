@@ -48,16 +48,10 @@ public class PersonDetails extends HttpServlet {
 		tx.begin();
 		response.setContentType("text/html");
 		 PrintWriter out = response.getWriter();
-		 if(request.getParameter("person").isEmpty())
+		 if(!request.getParameter("firstname").isEmpty())
 		 {
-		test.createPerson(request.getParameter("firstname"), request.getParameter("familyname") , request.getParameter("email"));
-		tx.commit();
-		 }
-		 else
-		 {
-			 PersonDao pd = new PersonDao();
-			 pd.deleteById(Long.parseLong(request.getParameter("person")));
-			 tx.commit();
+			test.createPerson(request.getParameter("firstname"), request.getParameter("familyname") , request.getParameter("email"));
+			tx.commit();
 		 }
 		 out.println("<h2><a href=\"index.html\">Retour page d'acueil</a></h2>");
          out.println("<table border = 2 cellpadding = \"10\" cellspacing = \"10\" align= \"center\">  <tr>  <th>Prenom</th> <th>Nom</th>  <th>Email</th> " );
